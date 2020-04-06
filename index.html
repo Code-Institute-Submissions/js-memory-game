@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nobile" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <title>Sports Memory Game</title>
 </head>
 <body>
@@ -17,11 +18,11 @@
 
         <section class="rating-panel">
         	<ul class="stars">
-        		<li><i class="fas fa-star"></i></li>
-        		<li><i class="fas fa-star"></i></li>
-                <li><i class="fas fa-star"></i></li>
-                <li><i class="fas fa-star"></i></li>
-                <li><i class="fas fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
         	</ul>
 
         	<span class="moves">0</span> Move(s)
@@ -34,56 +35,75 @@
         </section>
         <ul class="deck" id="card-deck">
             <li class="card" type="golf">
-                <i class="fas fa-golf-ball"></i>
+                <i class="fa fa-golf-ball"></i>
             </li>
             <li class="card" type="american-football">
-                <i class="fas fa-football-ball"></i>
+                <i class="fa fa-football-ball"></i>
             </li>
-            <li class="card match" type="soccer">
-                <i class="fas fa-futbol"></i>
+            <li class="card" type="soccer">
+                <i class="fa fa-futbol"></i>
             </li>
             <li class="card" type="baseball" >
-                <i class="fas fa-baseball-ball"></i>
+                <i class="fa fa-baseball-ball"></i>
             </li>
             <li class="card" type="volleyball">
-                <i class="fas fa-volleyball-ball"></i>
+                <i class="fa fa-volleyball-ball"></i>
             </li>
             <li class="card" type="basketball">
-                <i class="fas fa-basketball-ball"></i>
+                <i class="fa fa-basketball-ball"></i>
             </li>
             <li class="card" type="skiing">
-                <i class="fas fa-skiing"></i>
+                <i class="fa fa-skiing"></i>
             </li>
             <li class="card" type="cycling">
-                <i class="fas fa-bicycle"></i>
+                <i class="fa fa-bicycle"></i>
             </li>
             <li class="card" type="golf">
-                <i class="fas fa-golf-ball"></i>
+                <i class="fa fa-golf-ball"></i>
             </li>
             <li class="card" type="american-football">
-                <i class="fas fa-football-ball"></i>
+                <i class="fa fa-football-ball"></i>
             </li>
-            <li class="card match" type="soccer">
-                <i class="fas fa-futbol"></i>
+            <li class="card" type="soccer">
+                <i class="fa fa-futbol"></i>
             </li>
             <li class="card" type="baseball" >
-                <i class="fas fa-baseball-ball"></i>
+                <i class="fa fa-baseball-ball"></i>
             </li>
-            <li class="card open show" type="volleyball">
-                <i class="fas fa-volleyball-ball"></i>
+            <li class="card" type="volleyball">
+                <i class="fa fa-volleyball-ball"></i>
             </li>
             <li class="card" type="basketball">
-                <i class="fas fa-basketball-ball"></i>
+                <i class="fa fa-basketball-ball"></i>
             </li>
             <li class="card" type="skiing">
-                <i class="fas fa-skiing"></i>
+                <i class="fa fa-skiing"></i>
             </li>
             <li class="card" type="cycling">
-                <i class="fas fa-bicycle"></i>
+                <i class="fa fa-bicycle"></i>
             </li>
         </ul>
-
     </div>
+    <div class="modal" id="gameOverModal">
+            <div class="modal-content">
+                <span aria-label="close" role="button" class="close" id="closeModal">&times;</span>
+                <div class="modal-header">
+                    <h2>You Win!</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="message">
+                        <p>Congratulations! You successfully completed the game.</p>
+                        <p>You completed the game in <span id="totalGameMoves"></span> moves
+                            <br>in <span id="totalGameTime"></span>
+                        </p>
+                        <p>Your rating is: <span id="finalStarRating"></span></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="brown-button" onclick="playAgain()">Play Again</button>
+                </div>
+            </div>
+        </div>
     <script src="script.js"></script>
 </body>
 </html>
