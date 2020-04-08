@@ -80,8 +80,8 @@ h1 {
 	height: 60px;
 	width: 60px;
 	margin: 4px 4px;
-	background: #141214;;
-	font-size: 0;
+	background: #000000;
+	font-size: 60;
 	color: #ffffff;
 	border-radius: 5px;
 	cursor: pointer;
@@ -91,41 +91,20 @@ h1 {
 	box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
-.deck .card.open {
+.deck .card.show {
 	transform: rotateY(0);
 	background: #02b3e4;
 	cursor: default;
 	animation-name: flipInY;
-	-webkit-backface-visibility: visible !important;
+    -webkit-backface-visibility: visible !important;
 	backface-visibility: visible !important;
 	animation-duration: .75s;
+    font-size: 30px;
 }
 
-.deck .card.show {
-	font-size: 33px;
-}
+.hide i{
+    display: none;
 
-.deck .card.match {
-	cursor: default;
-	background: #E5F720;
-	font-size: 33px;
-	animation-name: rubberBand;
-	-webkit-backface-visibility: visible !important;
-	backface-visibility: visible !important;
-	animation-duration: .75s;
-}
-
-.deck .card.unmatched {
-	animation-name: pulse;
-	-webkit-backface-visibility: visible !important;
-	backface-visibility: visible !important;
-	animation-duration: .75s;
-	background: #e2043b;
-}
-
-.deck .card.disabled {
-	pointer-events: none;
-	opacity: 0.9;
 }
 
 /*----Game Ending Modal----*/
