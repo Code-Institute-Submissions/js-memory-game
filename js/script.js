@@ -1,19 +1,32 @@
-/*----Displaying Cards----*/
-
 // Click on card to display icon
 
 $('li').click(function (){
     $(this).children().show();
 })
-
-// Install shuffle function on page load and start game
+// Define card variable and cards array
 
 let card = document.getElementsByClassName("card");
 let cards = [...card];
 
+// Employ Fisher-Yates shuffle
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+}
+
 const deck = document.querySelector(".deck");
 function startGame(){
-   var shuffledCards = shuffle(cards);
+    // Shuffle cards
+   let shuffledCards = shuffle(cards);
    for (var i= 0; i < shuffledCards.length; i++){
       [].forEach.call(shuffledCards, function(item){
          deck.appendChild(item);
