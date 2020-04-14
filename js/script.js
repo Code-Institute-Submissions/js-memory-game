@@ -1,7 +1,40 @@
 // Click on card to display icon
 
+// var card1;
+var the_cards = [];
+// var card2;
+var card2 = [];
+
+// Click on card to display icon and add to relevant array
+
 $('li').click(function (){
     $(this).children().show();
+    console.log(this.type);
+    the_cards.push(this.type);
+    console.log(the_cards);
+    if (the_cards.length == 2) {
+        if (the_cards[0] == the_cards[1]) {
+
+        }
+    }
+    
+
+
+    // call a function and do something with the card you seleceted
+    // console.log(this);
+
+    // check if card1 has been set.
+    //  If not then set card1= this
+    // else set card2 = this
+    // then check if card1==card2
+
+
+
+    
+
+    
+
+
 })
 // Define card variable and cards array
 
@@ -35,3 +68,4 @@ function startGame(){
 }
 
 window.onload = startGame();
+
