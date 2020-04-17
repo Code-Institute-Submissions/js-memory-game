@@ -5,11 +5,14 @@ var the_cards = [];
 // var card2;
 var matches = 0;
 var moves = 0;
+var second = 0;
+var minute = 0;
 
 
 // Click on card to display icon and add to relevant array
 
 $('li').click(function (){
+    moveCounter();
     $(this).children().show();
     $(this).addClass('clicked');
     console.log(this.type);
@@ -17,7 +20,6 @@ $('li').click(function (){
 
     match();
 });
-
 
 function match() {
     console.log(the_cards);
@@ -50,10 +52,31 @@ function match() {
     }
 }
 
-function endGame() {
-    console.log("Test: endGame():", endGame() )
-    matches = 8;
+function moveCounter() {
+    moves++;
+    $('#moveCounter').text(moves);
+
+    if (moves === 1){
+        startTimer();
+    }
+    console.log('second', second)
+    console.log('minute', minute)
 }
+
+function startTimer() {
+    setInterval (function (){
+        second++;
+        if(second === 60) {
+            minute++;
+            second = 0;
+        }
+        $('#secs').text(second);
+        $('#mins').text(minute);
+    }, 1000)
+}
+
+
+
 
 // Define card variable and cards array
 
@@ -79,7 +102,6 @@ function shuffle(array) {
 const deck = document.querySelector(".deck");
 function startGame(){
     // Shuffle cards
-    let matches = 0;
    let shuffledCards = shuffle(cards);
    console.log('shuffledCards', shuffledCards);
     $(".icon").hide();

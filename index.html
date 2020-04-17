@@ -25,11 +25,16 @@
                 <li><i class="fa fa-star"></i></li>
         	</ul>
 
-        	<span class="moves">0</span> Move(s) | Time:
+        	<span>
+                <span class="move-counter" id="moveCounter">0 </span>
+                <span>move(s)</span>
+            </span>
+            <div>
+                <span id="mins">0</span> mins
+                <span id="secs">0</span> secs
+            </div>
 
-            <div class="timer"></div>
-
-            <div class="restart" onclick="startGame(), match()">
+            <div class="restart" onclick="startGame()">
         		<i class="fa fa-repeat"></i>
         	</div>
         </section>
@@ -84,7 +89,7 @@
             </li>
         </ul>
     </div>
-    <div class="modal" id="gameOverModal">
+    <div class="modal" id="endGameModal">
             <div class="modal-content">
                 <span aria-label="close" role="button" class="close" id="closeModal">&times;</span>
                 <div class="modal-header">
@@ -100,7 +105,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="brown-button">Play Again</button>
+                    <button class="brown-button" onclick="startGame()">Play Again</button>
                 </div>
             </div>
         </div>
