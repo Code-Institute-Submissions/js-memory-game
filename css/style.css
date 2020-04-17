@@ -102,6 +102,11 @@ h1 {
     font-size: 30px;
 }
 
+li.card.show.clicked.match {
+    display: contents;
+    background-color: #32CD32;
+}
+
 .hide i{
     display: none;
 

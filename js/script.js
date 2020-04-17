@@ -3,7 +3,8 @@
 // var card1;
 var the_cards = [];
 // var card2;
-var match = 0;
+var matches = 0;
+var moves = 0;
 
 
 // Click on card to display icon and add to relevant array
@@ -14,6 +15,11 @@ $('li').click(function (){
     console.log(this.type);
     the_cards.push(this);
 
+    match();
+});
+
+
+function match() {
     console.log(the_cards);
     console.log("Test the_cards.length == 2 : ",  the_cards.length == 2);
     if (the_cards.length == 2) {
@@ -22,37 +28,33 @@ $('li').click(function (){
         var card_2 = the_cards[1];
         console.log("Test card_1.type == card_2.type :", card_1.type == card_2.type)
         if (card_1.type == card_2.type) {
-            // console.log("Test $('li').children().addClass('match') :", $('li').children().addClass('match'))
+            console.log("Test $('.clicked').addClass('match') :", $('.clicked').addClass('match'))
+            console.log(the_cards);
             $('.clicked').addClass('match');
-            match++;
+            $('.icon').removeClass('notmatch');
+            $('.match').show();
+            matches++;
+            console.log(matches);
+            console.log(the_cards);
         } else {
-            $('.clicked').addClass('notmatch');
+            console.log(the_cards);
+            $('.clicked .icon').addClass('notmatch');
+
             setTimeout (function() {
                 $('.notmatch').hide();
-            }, 2000)
-            the_cards = [];
+            }, 1000)
             console.log(the_cards);
         }
+        $('.clicked').removeClass('clicked');
+        the_cards = [];
     }
-    
+}
 
+function endGame() {
+    console.log("Test: endGame():", endGame() )
+    matches = 8;
+}
 
-    // call a function and do something with the card you seleceted
-    // console.log(this);
-
-    // check if card1 has been set.
-    //  If not then set card1= this
-    // else set card2 = this
-    // then check if card1==card2
-
-
-
-    
-
-    
-
-
-})
 // Define card variable and cards array
 
 let card = document.getElementsByClassName("card");
@@ -77,13 +79,15 @@ function shuffle(array) {
 const deck = document.querySelector(".deck");
 function startGame(){
     // Shuffle cards
+    let matches = 0;
    let shuffledCards = shuffle(cards);
    console.log('shuffledCards', shuffledCards);
-//    for (var i= 0; i < shuffledCards.length; i++){
-//       [].forEach.call(shuffledCards, function(item){
-//          deck.appendChild(item);
-//       });
-//    }
+    $(".icon").hide();
+    for (var i= 0; i < shuffledCards.length; i++){
+        [].forEach.call(shuffledCards, function(item){
+           deck.appendChild(item);
+       });
+    }
 }
 
 window.onload = startGame();
