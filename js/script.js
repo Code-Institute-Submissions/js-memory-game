@@ -1,8 +1,4 @@
-// Click on card to display icon
-
-// var card1;
 var the_cards = [];
-// var card2;
 var matches = 0;
 var moves = 0;
 var second = 0;
@@ -20,6 +16,8 @@ $('li').click(function (){
 
     match();
 });
+
+// Matching Function
 
 function match() {
     console.log(the_cards);
@@ -52,6 +50,8 @@ function match() {
     }
 }
 
+// Move Counter Function
+
 function moveCounter() {
     moves++;
     $('#moveCounter').text(moves);
@@ -61,7 +61,10 @@ function moveCounter() {
     }
     console.log('second', second)
     console.log('minute', minute)
+
 }
+
+// Timer Function
 
 function startTimer() {
     setInterval (function (){
@@ -75,7 +78,13 @@ function startTimer() {
     }, 1000)
 }
 
+// End Game Function
 
+function endGame() {
+    if (matches === 8) {
+        $('#endGameModal').show();
+    }
+}
 
 
 // Define card variable and cards array
@@ -84,7 +93,7 @@ let card = document.getElementsByClassName("card");
 let cards = [...card];
 console.log('cards',cards);
 
-// Employ Fisher-Yates shuffle
+// Employ Shuffle Function Using The Fisher-Yates Shuffle Metho
 
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
@@ -101,6 +110,7 @@ function shuffle(array) {
 
 const deck = document.querySelector(".deck");
 function startGame(){
+    
     // Shuffle cards
    let shuffledCards = shuffle(cards);
    console.log('shuffledCards', shuffledCards);
@@ -110,6 +120,14 @@ function startGame(){
            deck.appendChild(item);
        });
     }
+
+    // reset moves
+    moves = 0;
+    $('#moveCounter').text(moves);
+
+    //reset timer
+    second = 0;
+    minute = 0;
 }
 
 window.onload = startGame();
