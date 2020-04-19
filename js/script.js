@@ -3,6 +3,7 @@ var matches = 0;
 var moves = 0;
 var second = 0;
 var minute = 0;
+var timer;
 
 
 // Click on card to display icon and add to relevant array
@@ -67,7 +68,7 @@ function moveCounter() {
 // Timer Function
 
 function startTimer() {
-    setInterval (function (){
+    timer = setInterval (function (){
         second++;
         if(second === 60) {
             minute++;
@@ -109,6 +110,9 @@ function shuffle(array) {
 }
 
 const deck = document.querySelector(".deck");
+
+// Start Game Function
+
 function startGame(){
     
     // Shuffle cards
@@ -128,6 +132,12 @@ function startGame(){
     //reset timer
     second = 0;
     minute = 0;
+    clearInterval(timer);
+    $('#secs').text(second);
+    $('#mins').text(minute);
+
+    //reset matches
+    matches = 0;
 }
 
 window.onload = startGame();
