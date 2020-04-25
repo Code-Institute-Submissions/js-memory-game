@@ -31,6 +31,7 @@ h1 {
 /*----Rating Panel----*/
 
 .rating-panel {
+    max-width: 100%;
 	text-align: left;
 	margin-bottom: 10px;
 }
@@ -47,7 +48,7 @@ h1 {
 }
 
 .rating-panel .restart {
-	float: right;
+    float: inherit;
 	cursor: pointer;
 }
 
@@ -109,7 +110,12 @@ li.card.show.clicked.match {
 
 }
 
-/*----Game Ending Modal----*/
+@media screen and (max-width: 600px) {
+    .deck {
+        width: 80%;
+    }
+}
+/*----Start & Ending Modal----*/
 
 .modal {
     display: none;
@@ -120,7 +126,7 @@ li.card.show.clicked.match {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: #000000;
+    background-color: #ffffff;
 }
 
 .modal-content {
@@ -129,8 +135,8 @@ li.card.show.clicked.match {
     padding: 0;
     position: relative;
     top: 5%;
-    background-color: #EFEBE9;
-    border: 1px solid #808080;
+    background-color: #02b3e4;
+    border: 1px solid #02b3e4;
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 #000000, 0 6px 20px 0 #000000;
     animation: animateTop 0.4s;
@@ -153,6 +159,16 @@ li.card.show.clicked.match {
 
 .modal-body .message p {
     margin-bottom: 8px;
+}
+
+.modal-body .leaderboard-header {
+    border-bottom: 1px solid #D7CCC8;
+    padding-left: 28px;
+    font-weight: bold;
+}
+
+.modal-body .leaderboard {
+    padding-left: 28px;
 }
 
 .modal-footer {

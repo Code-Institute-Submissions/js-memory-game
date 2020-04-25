@@ -4,15 +4,16 @@ var moves = 0;
 var second = 0;
 var minute = 0;
 var timer;
-
+var localStorageName = "userInput, finalStarRating";
+var leaderboard;
 
 // Click on card to display icon and add to relevant array
 
-$('li').click(function (){
+$('.card').click(function (){
     moveCounter();
     $(this).children().show();
     $(this).addClass('clicked');
-    console.log(this.type);
+    // console.log(this.type);
     the_cards.push(this);
 
     match();
@@ -21,33 +22,37 @@ $('li').click(function (){
 // Matching Function
 
 function match() {
-    console.log(the_cards);
-    console.log("Test the_cards.length == 2 : ",  the_cards.length == 2);
-    if (the_cards.length == 2) {
-        console.log("We are in the if statement now");
+    // console.log(the_cards);
+    // console.log("Test the_cards.length == 2 : ",  the_cards.length == 2);
+    if (the_cards.length === 2) {
+        // console.log("We are in the if statement now");
         var card_1 = the_cards[0];
         var card_2 = the_cards[1];
-        console.log("Test card_1.type == card_2.type :", card_1.type == card_2.type)
+        // console.log("Test card_1.type == card_2.type :", card_1.type == card_2.type)
         if (card_1.type == card_2.type) {
-            console.log("Test $('.clicked').addClass('match') :", $('.clicked').addClass('match'))
-            console.log(the_cards);
+            // console.log("Test $('.clicked').addClass('match') :", $('.clicked').addClass('match'))
+            // console.log(the_cards);
             $('.clicked').addClass('match');
             $('.icon').removeClass('notmatch');
             $('.match').show();
             matches++;
-            console.log(matches);
-            console.log(the_cards);
+            // console.log(matches);
+            // console.log(the_cards);
         } else {
-            console.log(the_cards);
+            // console.log(the_cards);
             $('.clicked .icon').addClass('notmatch');
 
             setTimeout (function() {
                 $('.notmatch').hide();
             }, 1000)
-            console.log(the_cards);
+            // console.log(the_cards);
         }
         $('.clicked').removeClass('clicked');
         the_cards = [];
+
+        if (matches === 8) {
+            endGame();
+        }
     }
 }
 
@@ -60,8 +65,8 @@ function moveCounter() {
     if (moves === 1){
         startTimer();
     }
-    console.log('second', second)
-    console.log('minute', minute)
+    // console.log('second', second)
+    // console.log('minute', minute)
 
 }
 
@@ -79,20 +84,95 @@ function startTimer() {
     }, 1000)
 }
 
+// Star Rating Function
+
+function rating() {
+    // Rates User Performance Based on Number on Moves
+    var stars;
+    let star = "<i class='fa fa-star'></i>";
+
+    if(moves > 16 && moves <= 22) {
+        stars = 5;
+    } else if(moves > 22 && moves <= 28) {
+        stars = 4;
+    } else if(moves > 28 && moves <= 34) {
+        stars = 3;
+    } else if(moves > 34 && moves <= 40) {
+        stars = 2;
+    } else if(moves > 40){
+        stars = 1;
+    }
+
+    for(let numStars = 0; numStars < stars; numStars++) {
+        $('#finalStarRating').append(star);
+    }
+}
+
 // End Game Function
 
 function endGame() {
-    if (matches === 8) {
-        $('#endGameModal').show();
-    }
+    // Displays modal
+    $('#endGameModal').show();
+    //$(this).addClass('show-modal');
+
+    matches = 0;
+
+    //debugger;
+    rating();
+
+    updateLeaderboard();
+    
 }
+
+// Close Modal Function
+
+function closeModal() {
+    $('#closeModal').click(function (){
+        // $('#endGameModal').removeClass('show-modal');
+        // $('#endGameModal').modal("hide");
+        $("#endGameModal").hide();
+        startGame();
+    })
+}
+
+// Play Again Function
+
+function playAgain() {
+    $("#endGameModal").hide();
+    //$('#endGameModal').removeClass('show-modal');
+    startGame();
+}
+
+// User Input Function
+
+function userInput() {
+    $("#userInputModal").show();
+}
+
+function userStartGame () {
+    //hide user input modal
+    $('#userInputModal').hide();
+    startGame();
+}
+
+// Saving User Name to Local Storage Item
+
+$('#Submit').click(function() {
+    var input = '<input type="text" id="userInput" />';
+    localStorage.setItem('name', 'input');
+})
+
+// Saving Users Star Rating to local storage
+
+var userRating = rating();
+localStorage.setItem('userStars', 'userRating');
 
 
 // Define card variable and cards array
 
 let card = document.getElementsByClassName("card");
 let cards = [...card];
-console.log('cards',cards);
+// console.log('cards',cards);
 
 // Employ Shuffle Function Using The Fisher-Yates Shuffle Metho
 
@@ -117,7 +197,7 @@ function startGame(){
     
     // Shuffle cards
    let shuffledCards = shuffle(cards);
-   console.log('shuffledCards', shuffledCards);
+    // console.log('shuffledCards', shuffledCards);
     $(".icon").hide();
     for (var i= 0; i < shuffledCards.length; i++){
         [].forEach.call(shuffledCards, function(item){
@@ -140,5 +220,21 @@ function startGame(){
     matches = 0;
 }
 
-window.onload = startGame();
+// Update Leaderboard
 
+debugger;
+function updateLeaderboard() {
+    if (localStorage.getItem(localStorageName) === null) {
+        leaderboard = 0;
+    }
+    else {
+        leaderboard = localStorage.getItem(localStorageName);
+    }
+    console.log("Test leaderboard = Math.max(finalStarRating, leaderboard) :", leaderboard = Math.max(finalStarRating, leaderboard));
+    leaderboard = Math.max(finalStarRating, leaderboard);
+    localStorage.setItem(localStorageName, leaderboard);
+    let leaderboardTable = document.getElementById("userInput");
+    leaderboardTable.textContent = leaderboard;
+}
+
+window.onload = userInput();
