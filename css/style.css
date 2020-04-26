@@ -30,8 +30,11 @@ h1 {
 
 /*----Rating Panel----*/
 
+section.rating-panel {
+    display: inline-block;
+}
+
 .rating-panel {
-    max-width: 100%;
 	text-align: left;
 	margin-bottom: 10px;
 }
@@ -48,7 +51,7 @@ h1 {
 }
 
 .rating-panel .restart {
-    float: inherit;
+    float: right;
 	cursor: pointer;
 }
 
@@ -100,14 +103,15 @@ h1 {
     font-size: 30px;
 }
 
-li.card.show.clicked.match {
-    display: contents;
-    background-color: #32CD32;
-}
-
 .hide i{
     display: none;
 
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .deck {
+        width: 80%;
+    }
 }
 
 @media screen and (max-width: 600px) {

@@ -20,7 +20,7 @@
                     <div class="message">
                         <p>Enter your name here. Click submit and then start to play!</p>
                         <input type="text" id="userInput" />
-                        <input type="submit" id="Submit">
+                        <button onclick="submit()">Submit</button>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -115,15 +115,12 @@
                 <div class="modal-body">
                     <div class="message">
                         <p>Congratulations! You successfully completed the game.</p>
-                        <p>You completed the game in <span id="totalGameMoves"></span> moves
-                            <br>in <span id="totalGameTime"></span>
-                        </p>
                         <p>Your rating is: <span id="finalStarRating"></span></p>
                     </div>
                     <div class="leaderboard-header">
                         <h4>Leaderboard:</h4>
                     </div>
-                    <ul class="leaderboard">
+                    <ul class="leaderboard" id="leaderboardTable">
                         <li>1st<span></span></li>
                         <li>2nd<span></span></li>
                         <li>3rd<span></span></li>

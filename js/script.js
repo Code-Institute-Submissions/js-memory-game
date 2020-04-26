@@ -4,7 +4,6 @@ var moves = 0;
 var second = 0;
 var minute = 0;
 var timer;
-var localStorageName = "userInput, finalStarRating";
 var leaderboard;
 
 // Click on card to display icon and add to relevant array
@@ -91,9 +90,9 @@ function rating() {
     var stars;
     let star = "<i class='fa fa-star'></i>";
 
-    if(moves > 16 && moves <= 22) {
+    if(moves > 16 && moves <= 24) {
         stars = 5;
-    } else if(moves > 22 && moves <= 28) {
+    } else if(moves > 24 && moves <= 28) {
         stars = 4;
     } else if(moves > 28 && moves <= 34) {
         stars = 3;
@@ -128,8 +127,6 @@ function endGame() {
 
 function closeModal() {
     $('#closeModal').click(function (){
-        // $('#endGameModal').removeClass('show-modal');
-        // $('#endGameModal').modal("hide");
         $("#endGameModal").hide();
         startGame();
     })
@@ -138,8 +135,8 @@ function closeModal() {
 // Play Again Function
 
 function playAgain() {
+    stars = 0;
     $("#endGameModal").hide();
-    //$('#endGameModal').removeClass('show-modal');
     startGame();
 }
 
@@ -157,16 +154,15 @@ function userStartGame () {
 
 // Saving User Name to Local Storage Item
 
-$('#Submit').click(function() {
-    var input = '<input type="text" id="userInput" />';
+function submit() {
+    var input = $('#userInput').value;
     localStorage.setItem('name', 'input');
-})
+}
 
 // Saving Users Star Rating to local storage
 
-var userRating = rating();
+var userRating = document.getElementById('finalStarRating');
 localStorage.setItem('userStars', 'userRating');
-
 
 // Define card variable and cards array
 
@@ -224,17 +220,16 @@ function startGame(){
 
 debugger;
 function updateLeaderboard() {
-    if (localStorage.getItem(localStorageName) === null) {
+    if (localStorage.getItem('name') && localStorage.getItem('userStars') === null) {
         leaderboard = 0;
     }
     else {
-        leaderboard = localStorage.getItem(localStorageName);
+        leaderboard = localStorage.getItem('name') && localStorage.getItem('userStars');
     }
-    console.log("Test leaderboard = Math.max(finalStarRating, leaderboard) :", leaderboard = Math.max(finalStarRating, leaderboard));
-    leaderboard = Math.max(finalStarRating, leaderboard);
-    localStorage.setItem(localStorageName, leaderboard);
-    let leaderboardTable = document.getElementById("userInput");
-    leaderboardTable.textContent = leaderboard;
+    leaderboard = Math.max(name, userStars);
+    localStorage.setItem('leaderboard');
+    let leaderboardTable = (leaderboard);
+    $('#leaderboardTable').textContent = leaderboard;
 }
 
 window.onload = userInput();
