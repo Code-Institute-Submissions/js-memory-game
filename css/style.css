@@ -71,7 +71,6 @@ span#mins {
 /*----Deck Cards----*/
 
 .deck {
-    width: 20%;
     max-width: 300px;
 	background: #FF0000;
 	padding: 16px;

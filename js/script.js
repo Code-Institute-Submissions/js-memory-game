@@ -12,7 +12,6 @@ $('.card').click(function (){
     moveCounter();
     $(this).children().show();
     $(this).addClass('clicked');
-    // console.log(this.type);
     the_cards.push(this);
 
     match();
@@ -21,30 +20,19 @@ $('.card').click(function (){
 // Matching Function
 
 function match() {
-    // console.log(the_cards);
-    // console.log("Test the_cards.length == 2 : ",  the_cards.length == 2);
     if (the_cards.length === 2) {
-        // console.log("We are in the if statement now");
         var card_1 = the_cards[0];
         var card_2 = the_cards[1];
-        // console.log("Test card_1.type == card_2.type :", card_1.type == card_2.type)
         if (card_1.type == card_2.type) {
-            // console.log("Test $('.clicked').addClass('match') :", $('.clicked').addClass('match'))
-            // console.log(the_cards);
             $('.clicked').addClass('match');
             $('.icon').removeClass('notmatch');
             $('.match').show();
             matches++;
-            // console.log(matches);
-            // console.log(the_cards);
         } else {
-            // console.log(the_cards);
             $('.clicked .icon').addClass('notmatch');
-
             setTimeout (function() {
                 $('.notmatch').hide();
             }, 1000)
-            // console.log(the_cards);
         }
         $('.clicked').removeClass('clicked');
         the_cards = [];
@@ -64,9 +52,6 @@ function moveCounter() {
     if (moves === 1){
         startTimer();
     }
-    // console.log('second', second)
-    // console.log('minute', minute)
-
 }
 
 // Timer Function
@@ -112,11 +97,9 @@ function rating() {
 function endGame() {
     // Displays modal
     $('#endGameModal').show();
-    //$(this).addClass('show-modal');
 
     matches = 0;
 
-    //debugger;
     rating();
 
     updateLeaderboard();
@@ -135,7 +118,7 @@ function closeModal() {
 // Play Again Function
 
 function playAgain() {
-    stars = 0;
+    $("#finalStarRating").empty();
     $("#endGameModal").hide();
     startGame();
 }
@@ -152,23 +135,10 @@ function userStartGame () {
     startGame();
 }
 
-// Saving User Name to Local Storage Item
-
-function submit() {
-    var input = $('#userInput').value;
-    localStorage.setItem('name', 'input');
-}
-
-// Saving Users Star Rating to local storage
-
-var userRating = document.getElementById('finalStarRating');
-localStorage.setItem('userStars', 'userRating');
-
 // Define card variable and cards array
 
 let card = document.getElementsByClassName("card");
 let cards = [...card];
-// console.log('cards',cards);
 
 // Employ Shuffle Function Using The Fisher-Yates Shuffle Metho
 
@@ -193,7 +163,6 @@ function startGame(){
     
     // Shuffle cards
    let shuffledCards = shuffle(cards);
-    // console.log('shuffledCards', shuffledCards);
     $(".icon").hide();
     for (var i= 0; i < shuffledCards.length; i++){
         [].forEach.call(shuffledCards, function(item){
@@ -215,6 +184,18 @@ function startGame(){
     //reset matches
     matches = 0;
 }
+
+// // Saving User Name to Local Storage Item
+
+function submit() {
+    var input = $('#userInput').value;
+    localStorage.setItem('name', 'input');
+}
+
+// Saving Users Star Rating to local storage
+
+var userRating = document.getElementById('finalStarRating');
+localStorage.setItem('userStars', 'userRating');
 
 // Update Leaderboard
 
