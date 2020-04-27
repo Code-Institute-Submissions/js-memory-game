@@ -12,22 +12,21 @@
 </head>
 <body>
     <div class="modal" id="userInputModal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>Welcome to the Transport Memory Game!</h2>
-                </div>
-                <div class="modal-body">
-                    <div class="message">
-                        <p>Enter your name here. Click submit and then start to play!</p>
-                        <input type="text" id="userInput" />
-                        <button onclick="submit()">Submit</button>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="brown-button user-start-game" onclick="userStartGame()">Start!</button>
-                </div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Welcome to the Transport Memory Game!</h2>
+            </div>
+            <div class="modal-body">
+            <div class="message">
+                <p>Enter your name here. Click submit and then start to play!</p>
+                <input type="text" id="userInput" />
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="brown-button user-start-game" onclick="userStartGame()">Start!</button>
             </div>
         </div>
+    </div>
     <div class="container">
         <header>
             <h1>Transport Memory Game</h1>
@@ -117,16 +116,6 @@
                         <p>Congratulations! You successfully completed the game.</p>
                         <p>Your rating is: <span id="finalStarRating"></span></p>
                     </div>
-                    <div class="leaderboard-header">
-                        <h4>Leaderboard:</h4>
-                    </div>
-                    <ul class="leaderboard" id="leaderboardTable">
-                        <li>1st<span></span></li>
-                        <li>2nd<span></span></li>
-                        <li>3rd<span></span></li>
-                        <li>4th<span></span></li>
-                        <li>5th<span></span></li>
-                    </ul>
                 </div>
                 <div class="modal-footer">
                     <button data-dismiss="modal" class="brown-button play-again" onclick="playAgain()">Play Again</button>
