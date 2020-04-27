@@ -67,11 +67,16 @@ For Example: testing my match function
 - The if statement seemed to work effectively and I employed a debugger statement to confirm.
 - I also console logged the relevant elements to ensure the 'match','unmatch' and 'clicked' classes were being added/removed.
 
+I also tested the game in Google Dev Tools for responsiveness and also manually on the following devices:
+- iPad
+- iPhone
+
 ## Deployment
 
 I deployed my project using github pages.
+https://tipoki13.github.io/js-memory-game/
 
-The process was as follows:
+The process was as follows: 
     1. Click into settings in Github account.
     2. Scroll to the Source section within the Github Pages section.
     3. From the dropdown menu, select master branch and then click Save.
